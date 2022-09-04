@@ -22,7 +22,7 @@ function MyApp(props) {
         />
 
         {/* Favicon */}
-        <link href="/favicon.ico" rel="shortcut icon" />
+        <link href={`${process.env.NEXT_PUBLIC_IMAGES}/favicon.ico`} rel="shortcut icon" />
       </Head>
 
       {/* Component yang dirender */}
