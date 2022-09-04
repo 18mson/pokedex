@@ -11,14 +11,10 @@ function MyApp(props) {
   return (
     <>
       <Head>
-        <title>Codebase</title>
+        <title>Pokedex by Muhamad Son ani</title>
         <meta
           content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
           name="viewport"
-        />
-        <meta
-          content="Standar codebase yang ditentukan untuk Frontend yang menggunakan SSR."
-          name="description"
         />
 
         {/* Favicon */}
