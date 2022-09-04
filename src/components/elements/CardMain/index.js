@@ -28,7 +28,7 @@ export default function CardMain(props) {
 
 CardMain.defaultProps = {
   name: () => {},
-  todo: {},
+  url: {},
 };
 
 CardMain.propTypes = {
