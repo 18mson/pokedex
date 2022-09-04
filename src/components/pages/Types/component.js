@@ -43,7 +43,6 @@ export default function Home() {
 
   useEffect(() => {
     id && dispatch(getType(id));
-    setDataPokemon(pokemon);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, id]);
 
