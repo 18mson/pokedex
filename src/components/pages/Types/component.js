@@ -20,7 +20,6 @@ export default function Home() {
   } = useSelector((state) => state.type || {});
   const { isLoading } = useSelector((state) => state.loading || {});
 
-
   const options = [
     {
       label: 'A-Z',
@@ -40,16 +39,19 @@ export default function Home() {
     },
   ];
 
-
   useEffect(() => {
     id && dispatch(getType(id));
-    setDataPokemon(pokemon);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setFilter('1-999');
   }, [dispatch, id]);
+
+  useEffect(() => {
+    setDataPokemon(pokemon);
+  }, [pokemon]);
 
   const handleGetId = (url) => {
     const id =
-      url?.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '') || 0;
+      url?.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '') ||
+      0;
     return Number(id);
   };
 
@@ -66,12 +68,14 @@ export default function Home() {
       );
       setDataPokemon(sorted);
     } else if (value === '1-999') {
-      const sorted = pokemon.sort((a, b) =>
-      handleGetId(a.pokemon.url) - handleGetId(b.pokemon.url));
+      const sorted = pokemon.sort(
+        (a, b) => handleGetId(a.pokemon.url) - handleGetId(b.pokemon.url)
+      );
       setDataPokemon(sorted);
     } else if (value === '999-1') {
-      const sorted = pokemon.sort((a, b) =>
-      handleGetId(b.pokemon.url) - handleGetId(a.pokemon.url));
+      const sorted = pokemon.sort(
+        (a, b) => handleGetId(b.pokemon.url) - handleGetId(a.pokemon.url)
+      );
       setDataPokemon(sorted);
     }
   };
@@ -89,7 +93,8 @@ export default function Home() {
   };
 
   const handleBytype = (url) => {
-    const TypeId = url?.replace('https://pokeapi.co/api/v2/type/', '').replace('/', '') || 0;;
+    const TypeId =
+      url?.replace('https://pokeapi.co/api/v2/type/', '').replace('/', '') || 0;
     router.push({
       pathname: `/types/${Number(TypeId)}`,
     });
@@ -105,25 +110,19 @@ export default function Home() {
           <div>
             {Number(id) > 1 && (
               <button
-                className="mr-4 md:w-10 w-7 pt-2"
+                className="mr-4 w-12 py-1 border-2 border-black rounded-3xl font-medium"
                 onClick={handleClickPrev}
               >
-                <Image
-                  alt="prev"
-                  height="40"
-                  src={IMAGES.ARROW_LEFT}
-                  width="40"
-                />
+                Prev
               </button>
             )}
+
             {Number(id) < 18 && (
-              <button className="md:w-10 w-7 pt-2" onClick={handleClickNext}>
-                <Image
-                  alt="next"
-                  height="40"
-                  src={IMAGES.ARROW_RIGHT}
-                  width="40"
-                />
+              <button
+                className="w-12 p-1 border-2 border-black rounded-3xl font-medium"
+                onClick={handleClickNext}
+              >
+                Next
               </button>
             )}
           </div>
@@ -359,19 +358,13 @@ export default function Home() {
               </select>
             </div>
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 mt-2">
-              {dataPokemon.length? dataPokemon.map((ab, key) => (
-                <CardMain
-                  key={key}
-                  name={ab.pokemon.name}
-                  url={ab.pokemon.url}
-                />
-              )): pokemon.map((ab, key) => (
-                <CardMain
-                  key={key}
-                  name={ab.pokemon.name}
-                  url={ab.pokemon.url}
-                />
-              ))}
+              {dataPokemon.map((ab, key) => (
+                    <CardMain
+                      key={key}
+                      name={ab.pokemon.name}
+                      url={ab.pokemon.url}
+                    />
+                  ))}
             </div>
           </div>
           <div>

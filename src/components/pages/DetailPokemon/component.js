@@ -61,24 +61,14 @@ function DetailPokemon() {
           <div>
             {Number(id) > 1 && (
               <button
-                className="mr-4 md:w-10 w-7 pt-2"
+                className="mr-4 w-12 py-1 border-2 border-black rounded-3xl font-medium"
                 onClick={handleClickPrev}
               >
-                <Image
-                  alt="prev"
-                  height="40"
-                  src={IMAGES.ARROW_LEFT}
-                  width="40"
-                />
+                Prev
               </button>
             )}
-            <button className="md:w-10 w-7 pt-2" onClick={handleClickNext}>
-              <Image
-                alt="next"
-                height="40"
-                src={IMAGES.ARROW_RIGHT}
-                width="40"
-              />
+            <button className="w-12 p-1 border-2 border-black rounded-3xl font-medium" onClick={handleClickNext}>
+                Next
             </button>
           </div>
         </div>

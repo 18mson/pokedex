@@ -14,7 +14,6 @@ function Component({
         <div className="h-20 mx-auto flex items-center lg:max-w-screen-lg">
           <Link href="/" passHref>
             <div className="flex cursor-pointer">
-              <Image alt="star" height="30" src={IMAGES.POKEBALL} width="30" />
               <a className="block text-2xl pl-2">Pokedex</a>
             </div>
           </Link>
